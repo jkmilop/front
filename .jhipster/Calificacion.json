@@ -1,0 +1,35 @@
+{
+  "applications": "*",
+  "changelogDate": "20220919004318",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "calificacion",
+  "fields": [
+    {
+      "fieldName": "nota",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Calificacion",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "actividad",
+      "otherEntityRelationshipName": "calificacion",
+      "relationshipName": "actividad",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "estudiante",
+      "otherEntityRelationshipName": "calificacion",
+      "relationshipName": "estudiante",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

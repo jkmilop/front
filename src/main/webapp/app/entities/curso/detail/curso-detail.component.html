@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="curso">
+      <h2 data-cy="cursoDetailsHeading"><span>Curso</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ curso.id }}</span>
+        </dd>
+        <dt><span>Nombre</span></dt>
+        <dd>
+          <span>{{ curso.nombre }}</span>
+        </dd>
+        <dt><span>Estado</span></dt>
+        <dd>
+          <span>{{ curso.estado }}</span>
+        </dd>
+        <dt><span>Profesor</span></dt>
+        <dd>
+          <div *ngIf="curso.profesor">
+            <a [routerLink]="['/profesor', curso.profesor.id, 'view']">{{ curso.profesor.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/curso', curso.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="matricula">
+      <h2 data-cy="matriculaDetailsHeading"><span>Matricula</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ matricula.id }}</span>
+        </dd>
+        <dt><span>Estudiante</span></dt>
+        <dd>
+          <div *ngIf="matricula.estudiante">
+            <a [routerLink]="['/estudiante', matricula.estudiante.id, 'view']">{{ matricula.estudiante.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Curso</span></dt>
+        <dd>
+          <div *ngIf="matricula.curso">
+            <a [routerLink]="['/curso', matricula.curso.id, 'view']">{{ matricula.curso.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/matricula', matricula.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

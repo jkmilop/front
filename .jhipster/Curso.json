@@ -1,0 +1,46 @@
+{
+  "applications": "*",
+  "changelogDate": "20220919004315",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "curso",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Curso",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "actividad",
+      "otherEntityRelationshipName": "curso",
+      "relationshipName": "actividad",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "matricula",
+      "otherEntityRelationshipName": "curso",
+      "relationshipName": "matricula",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "profesor",
+      "otherEntityRelationshipName": "curso",
+      "relationshipName": "profesor",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

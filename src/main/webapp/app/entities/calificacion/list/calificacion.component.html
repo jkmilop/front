@@ -1,0 +1,110 @@
+<div>
+  <h2 id="page-heading" data-cy="CalificacionHeading">
+    <span>Calificacions</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-calificacion"
+        [routerLink]="['/calificacion/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Crear nuevo Calificacion </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="calificacions?.length === 0">
+    <span>Ningún Calificacions encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="calificacions && calificacions.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span>ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nota">
+            <div class="d-flex">
+              <span>Nota</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="actividad.id">
+            <div class="d-flex">
+              <span>Actividad</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="estudiante.id">
+            <div class="d-flex">
+              <span>Estudiante</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let calificacion of calificacions; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/calificacion', calificacion.id, 'view']">{{ calificacion.id }}</a>
+          </td>
+          <td>{{ calificacion.nota }}</td>
+          <td>
+            <div *ngIf="calificacion.actividad">
+              <a [routerLink]="['/actividad', calificacion.actividad.id, 'view']">{{ calificacion.actividad.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="calificacion.estudiante">
+              <a [routerLink]="['/estudiante', calificacion.estudiante.id, 'view']">{{ calificacion.estudiante.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/calificacion', calificacion.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">Vista</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/calificacion', calificacion.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(calificacion)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Eliminar</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
