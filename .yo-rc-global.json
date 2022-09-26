@@ -1,7 +1,7 @@
 {
   "generator-jhipster:7.9.3": {
     "promptValues": {
-      "packageName": "co.usbcali.edu.ingesoft2",
+      "packageName": "co.edu.usbcali.ingesoft",
       "nativeLanguage": "es"
     }
   }

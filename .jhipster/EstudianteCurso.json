@@ -1,0 +1,29 @@
+{
+  "applications": "*",
+  "changelogDate": "20220926025649",
+  "clientRootFolder": "back",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "estudiante_curso",
+  "fields": [],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "back",
+  "name": "EstudianteCurso",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "curso",
+      "relationshipName": "curso",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "estudiante",
+      "relationshipName": "estudiante",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

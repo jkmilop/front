@@ -17,17 +17,7 @@
     <property name="datetimeType" value="datetime" dbms="postgresql"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20220919004313_added_entity_Estudiante.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20220919004314_added_entity_Profesor.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20220919004315_added_entity_Curso.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20220919004316_added_entity_Actividad.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20220919004317_added_entity_Matricula.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20220919004318_added_entity_Calificacion.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
-    <include file="config/liquibase/changelog/20220919004315_added_entity_constraints_Curso.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20220919004316_added_entity_constraints_Actividad.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20220919004317_added_entity_constraints_Matricula.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20220919004318_added_entity_constraints_Calificacion.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

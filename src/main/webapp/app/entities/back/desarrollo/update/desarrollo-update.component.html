@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-desarrollo-heading" data-cy="DesarrolloCreateUpdateHeading">Crear o editar Desarrollo</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_terminado">Terminado</label>
+          <input type="checkbox" class="form-check" name="terminado" id="field_terminado" data-cy="terminado" formControlName="terminado" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_nota">Nota</label>
+          <input type="number" class="form-control" name="nota" id="field_nota" data-cy="nota" formControlName="nota" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_estudiante">Estudiante</label>
+          <select
+            class="form-control"
+            id="field_estudiante"
+            data-cy="estudiante"
+            name="estudiante"
+            formControlName="estudiante"
+            [compareWith]="compareEstudiante"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="estudianteOption" *ngFor="let estudianteOption of estudiantesSharedCollection">
+              {{ estudianteOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_actividad">Actividad</label>
+          <select
+            class="form-control"
+            id="field_actividad"
+            data-cy="actividad"
+            name="actividad"
+            formControlName="actividad"
+            [compareWith]="compareActividad"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="actividadOption" *ngFor="let actividadOption of actividadsSharedCollection">{{ actividadOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="actividad">
+      <h2 data-cy="actividadDetailsHeading"><span>Actividad</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ actividad.id }}</span>
+        </dd>
+        <dt><span>Actividad Name</span></dt>
+        <dd>
+          <span>{{ actividad.actividadName }}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+          <span>{{ actividad.description }}</span>
+        </dd>
+        <dt><span>Fecha Inicio</span></dt>
+        <dd>
+          <span>{{ actividad.fechaInicio | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Fecha Fin</span></dt>
+        <dd>
+          <span>{{ actividad.fechaFin | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Formato</span></dt>
+        <dd>
+          <span>{{ actividad.formato }}</span>
+        </dd>
+        <dt><span>Curso</span></dt>
+        <dd>
+          <div *ngIf="actividad.curso">
+            <a [routerLink]="['/curso', actividad.curso.id, 'view']">{{ actividad.curso.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/actividad', actividad.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

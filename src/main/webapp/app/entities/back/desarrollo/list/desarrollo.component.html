@@ -1,0 +1,117 @@
+<div>
+  <h2 id="page-heading" data-cy="DesarrolloHeading">
+    <span>Desarrollos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-desarrollo"
+        [routerLink]="['/desarrollo/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Crear nuevo Desarrollo </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="desarrollos?.length === 0">
+    <span>Ningún Desarrollos encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="desarrollos && desarrollos.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span>ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="terminado">
+            <div class="d-flex">
+              <span>Terminado</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nota">
+            <div class="d-flex">
+              <span>Nota</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="estudiante.id">
+            <div class="d-flex">
+              <span>Estudiante</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="actividad.id">
+            <div class="d-flex">
+              <span>Actividad</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let desarrollo of desarrollos; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/desarrollo', desarrollo.id, 'view']">{{ desarrollo.id }}</a>
+          </td>
+          <td>{{ desarrollo.terminado }}</td>
+          <td>{{ desarrollo.nota }}</td>
+          <td>
+            <div *ngIf="desarrollo.estudiante">
+              <a [routerLink]="['/estudiante', desarrollo.estudiante.id, 'view']">{{ desarrollo.estudiante.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="desarrollo.actividad">
+              <a [routerLink]="['/actividad', desarrollo.actividad.id, 'view']">{{ desarrollo.actividad.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/desarrollo', desarrollo.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">Vista</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/desarrollo', desarrollo.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(desarrollo)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Eliminar</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

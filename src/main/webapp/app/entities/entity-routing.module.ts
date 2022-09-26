@@ -5,34 +5,34 @@ import { RouterModule } from '@angular/router';
   imports: [
     RouterModule.forChild([
       {
+        path: 'curso',
+        data: { pageTitle: 'Cursos' },
+        loadChildren: () => import('./back/curso/curso.module').then(m => m.BackCursoModule),
+      },
+      {
         path: 'estudiante',
         data: { pageTitle: 'Estudiantes' },
-        loadChildren: () => import('./estudiante/estudiante.module').then(m => m.EstudianteModule),
+        loadChildren: () => import('./back/estudiante/estudiante.module').then(m => m.BackEstudianteModule),
+      },
+      {
+        path: 'estudiante-curso',
+        data: { pageTitle: 'EstudianteCursos' },
+        loadChildren: () => import('./back/estudiante-curso/estudiante-curso.module').then(m => m.BackEstudianteCursoModule),
       },
       {
         path: 'profesor',
         data: { pageTitle: 'Profesors' },
-        loadChildren: () => import('./profesor/profesor.module').then(m => m.ProfesorModule),
-      },
-      {
-        path: 'curso',
-        data: { pageTitle: 'Cursos' },
-        loadChildren: () => import('./curso/curso.module').then(m => m.CursoModule),
+        loadChildren: () => import('./back/profesor/profesor.module').then(m => m.BackProfesorModule),
       },
       {
         path: 'actividad',
         data: { pageTitle: 'Actividads' },
-        loadChildren: () => import('./actividad/actividad.module').then(m => m.ActividadModule),
+        loadChildren: () => import('./back/actividad/actividad.module').then(m => m.BackActividadModule),
       },
       {
-        path: 'matricula',
-        data: { pageTitle: 'Matriculas' },
-        loadChildren: () => import('./matricula/matricula.module').then(m => m.MatriculaModule),
-      },
-      {
-        path: 'calificacion',
-        data: { pageTitle: 'Calificacions' },
-        loadChildren: () => import('./calificacion/calificacion.module').then(m => m.CalificacionModule),
+        path: 'desarrollo',
+        data: { pageTitle: 'Desarrollos' },
+        loadChildren: () => import('./back/desarrollo/desarrollo.module').then(m => m.BackDesarrolloModule),
       },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),

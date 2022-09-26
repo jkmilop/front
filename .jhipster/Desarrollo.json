@@ -1,0 +1,38 @@
+{
+  "applications": "*",
+  "changelogDate": "20220926025652",
+  "clientRootFolder": "back",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "desarrollo",
+  "fields": [
+    {
+      "fieldName": "terminado",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "nota",
+      "fieldType": "Double"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "back",
+  "name": "Desarrollo",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "estudiante",
+      "relationshipName": "estudiante",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "actividad",
+      "relationshipName": "actividad",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

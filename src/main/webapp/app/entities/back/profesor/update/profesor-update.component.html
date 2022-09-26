@@ -1,0 +1,61 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-profesor-heading" data-cy="ProfesorCreateUpdateHeading">Crear o editar Profesor</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_profesorName">Profesor Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="profesorName"
+            id="field_profesorName"
+            data-cy="profesorName"
+            formControlName="profesorName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_codigoProfesor">Codigo Profesor</label>
+          <input
+            type="text"
+            class="form-control"
+            name="codigoProfesor"
+            id="field_codigoProfesor"
+            data-cy="codigoProfesor"
+            formControlName="codigoProfesor"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_correo">Correo</label>
+          <input type="text" class="form-control" name="correo" id="field_correo" data-cy="correo" formControlName="correo" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

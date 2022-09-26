@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-curso-heading" data-cy="CursoCreateUpdateHeading">Crear o editar Curso</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_cursoName">Curso Name</label>
+          <input type="text" class="form-control" name="cursoName" id="field_cursoName" data-cy="cursoName" formControlName="cursoName" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_tipoCurso">Tipo Curso</label>
+          <select class="form-control" name="tipoCurso" formControlName="tipoCurso" id="field_tipoCurso" data-cy="tipoCurso">
+            <option [ngValue]="null"></option>
+            <option *ngFor="let tipoCurso of tipoCursoValues" [value]="tipoCurso">tipoCurso</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_profesor">Profesor</label>
+          <select
+            class="form-control"
+            id="field_profesor"
+            data-cy="profesor"
+            name="profesor"
+            formControlName="profesor"
+            [compareWith]="compareProfesor"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="profesorOption" *ngFor="let profesorOption of profesorsSharedCollection">{{ profesorOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

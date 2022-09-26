@@ -1,45 +1,31 @@
 {
   "applications": "*",
-  "changelogDate": "20220919004313",
+  "changelogDate": "20220926025648",
+  "clientRootFolder": "back",
   "databaseType": "sql",
-  "dto": "no",
+  "dto": "mapstruct",
   "embedded": false,
   "entityTableName": "estudiante",
   "fields": [
     {
-      "fieldName": "nombre",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldName": "estudianteName",
+      "fieldType": "String"
     },
     {
-      "fieldName": "apellido",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldName": "codigoEstudiante",
+      "fieldType": "String"
     },
     {
       "fieldName": "correo",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldType": "String"
     }
   ],
   "fluentMethods": true,
   "jpaMetamodelFiltering": false,
+  "microserviceName": "back",
   "name": "Estudiante",
   "pagination": "no",
   "readOnly": false,
-  "relationships": [
-    {
-      "otherEntityName": "matricula",
-      "otherEntityRelationshipName": "estudiante",
-      "relationshipName": "matricula",
-      "relationshipType": "one-to-many"
-    },
-    {
-      "otherEntityName": "calificacion",
-      "otherEntityRelationshipName": "estudiante",
-      "relationshipName": "calificacion",
-      "relationshipType": "one-to-many"
-    }
-  ],
-  "service": "no"
+  "relationships": [],
+  "service": "serviceImpl"
 }

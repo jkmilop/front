@@ -1,40 +1,46 @@
 {
   "applications": "*",
-  "changelogDate": "20220919004316",
+  "changelogDate": "20220926025651",
+  "clientRootFolder": "back",
   "databaseType": "sql",
-  "dto": "no",
+  "dto": "mapstruct",
   "embedded": false,
   "entityTableName": "actividad",
   "fields": [
     {
-      "fieldName": "nombre",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldName": "actividadName",
+      "fieldType": "String"
     },
     {
-      "fieldName": "estado",
-      "fieldType": "Boolean",
-      "fieldValidateRules": ["required"]
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fechaInicio",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "fechaFin",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "formato",
+      "fieldType": "NombreFormato",
+      "fieldValues": "QUIZ,ACTIVIDAD,PARCIAL"
     }
   ],
   "fluentMethods": true,
   "jpaMetamodelFiltering": false,
+  "microserviceName": "back",
   "name": "Actividad",
   "pagination": "no",
   "readOnly": false,
   "relationships": [
     {
-      "otherEntityName": "calificacion",
-      "otherEntityRelationshipName": "actividad",
-      "relationshipName": "calificacion",
-      "relationshipType": "one-to-many"
-    },
-    {
       "otherEntityName": "curso",
-      "otherEntityRelationshipName": "actividad",
       "relationshipName": "curso",
       "relationshipType": "many-to-one"
     }
   ],
-  "service": "no"
+  "service": "serviceImpl"
 }

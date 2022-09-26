@@ -18,7 +18,7 @@ logging:
     ROOT: DEBUG
     tech.jhipster: DEBUG
     org.hibernate.SQL: DEBUG
-    co.usbcali.edu.ingesoft2: DEBUG
+    co.edu.usbcali.ingesoft: DEBUG
 
 eureka:
   instance:
@@ -113,7 +113,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: NWRjODUxNjgzNDIyNzhmZjdjYTRkMzRhMTY3ZWVlMzNjMmJiY2VmODBhNzY0N2Y1OWQyZTA4MTg3MTg3NzI2YzliZDk1NzY5OTAyNjdmNzY4MjMxNDdmMDBhNThlOTMzOWY4ZjYyYWFhMjViYjAxZWU4ZjQzZmQ2OTdhZDlkMWE=
+        base64-secret: NmRjZGJkYjc1ZTE5Yjk4ODY1ZWYzOTA4ZTgyODBhYzNhNWUwMmNjMTgxOGY5OTA3MzZkMDIxNjMxZDJkYzI2YmFhNThiODhjYjY1ZGFmM2EwYmI5NmE5Y2Q3NTZlYmI3ZTdiODY0ZGZmY2JmY2YxZjRhNjc0M2YxNjJjYjgzYjI=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000

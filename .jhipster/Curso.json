@@ -1,46 +1,34 @@
 {
   "applications": "*",
-  "changelogDate": "20220919004315",
+  "changelogDate": "20220926025647",
+  "clientRootFolder": "back",
   "databaseType": "sql",
-  "dto": "no",
+  "dto": "mapstruct",
   "embedded": false,
   "entityTableName": "curso",
   "fields": [
     {
-      "fieldName": "nombre",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldName": "cursoName",
+      "fieldType": "String"
     },
     {
-      "fieldName": "estado",
-      "fieldType": "Boolean",
-      "fieldValidateRules": ["required"]
+      "fieldName": "tipoCurso",
+      "fieldType": "TipoCurso",
+      "fieldValues": "CALCULO,AVANZADA,MAGANA"
     }
   ],
   "fluentMethods": true,
   "jpaMetamodelFiltering": false,
+  "microserviceName": "back",
   "name": "Curso",
   "pagination": "no",
   "readOnly": false,
   "relationships": [
     {
-      "otherEntityName": "actividad",
-      "otherEntityRelationshipName": "curso",
-      "relationshipName": "actividad",
-      "relationshipType": "one-to-many"
-    },
-    {
-      "otherEntityName": "matricula",
-      "otherEntityRelationshipName": "curso",
-      "relationshipName": "matricula",
-      "relationshipType": "one-to-many"
-    },
-    {
       "otherEntityName": "profesor",
-      "otherEntityRelationshipName": "curso",
       "relationshipName": "profesor",
       "relationshipType": "many-to-one"
     }
   ],
-  "service": "no"
+  "service": "serviceImpl"
 }

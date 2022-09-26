@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="desarrollo">
+      <h2 data-cy="desarrolloDetailsHeading"><span>Desarrollo</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ desarrollo.id }}</span>
+        </dd>
+        <dt><span>Terminado</span></dt>
+        <dd>
+          <span>{{ desarrollo.terminado }}</span>
+        </dd>
+        <dt><span>Nota</span></dt>
+        <dd>
+          <span>{{ desarrollo.nota }}</span>
+        </dd>
+        <dt><span>Estudiante</span></dt>
+        <dd>
+          <div *ngIf="desarrollo.estudiante">
+            <a [routerLink]="['/estudiante', desarrollo.estudiante.id, 'view']">{{ desarrollo.estudiante.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Actividad</span></dt>
+        <dd>
+          <div *ngIf="desarrollo.actividad">
+            <a [routerLink]="['/actividad', desarrollo.actividad.id, 'view']">{{ desarrollo.actividad.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/desarrollo', desarrollo.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Editar</span>
+      </button>
+    </div>
+  </div>
+</div>
